@@ -28,7 +28,14 @@ void printHeartbeat(heartbeat* h) {
 }
 
 int isHeartbeat(char* c) {
-return strcmp(c, "heartbeat");
+    int val = strcmp(c, "heartbeat");
+    if (val) {
+        printf("Function says heartbeat");
+    }
+    else {
+        printf("Function says response");
+    }
+    return val;
 }
 
 response* craftResponse(heartbeat* h) {
