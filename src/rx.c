@@ -47,11 +47,14 @@ void* rxmain(void* stream) {
 			(struct sockaddr*)&senderaddr, &senderaddrlen);
 
 		if(rc < 0 && errno != EAGAIN && errno != EWOULDBLOCK) {
+            printf("hit receive from error");
 			perror("recvfrom error");
 			close(sd);
 			pthread_exit(NULL);
 		} else if(rc >= 0) {
+            printf("RC IS greater than or equal to 0");
 			if(isHeartbeat((char*)buffer)) {
+                printf("Heartbeat IF statement pass");
 				printf("Heartbeat received (%s):\n",
 					inet_ntoa(senderaddr.sin_addr));
 
@@ -79,6 +82,7 @@ void* rxmain(void* stream) {
 
 				printf("%d\n", rc);
 			} else {
+                printf("Not a heartbeat");
 				printf("Response received (%s):\n",
 					inet_ntoa(senderaddr.sin_addr));
 
