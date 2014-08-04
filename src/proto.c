@@ -28,7 +28,7 @@ void printHeartbeat(heartbeat* h) {
 }
 
 int isHeartbeat(char* c) {
-return strcmp(c, "heartbeat");
+return !(strcmp(c, "heartbeat"));
 }
 
 response* craftResponse(heartbeat* h) {
